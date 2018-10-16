@@ -130,8 +130,8 @@ Response response =
 ```
 #### Fallback mechanism
 ```java
-Get primary = new Get("http://mainserver@somewhere.com/blah");
-Get secondary = new Get("http://backupserver@somewhere.com/blah");
+Get primary = new Get("http://mainserver.somewhere.com/blah");
+Get secondary = new Get("http://backupserver.somewhere.com/blah");
    
 FallbackRequest fr1 = new FallbackRequest();
 //Request to the primary server then immediately request to the secondary server if that fails.
