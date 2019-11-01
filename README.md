@@ -10,6 +10,7 @@ HttpSender is an Http Client for Java. Features of note:
 * Convenience class to simplify Form POSTs
 * Fallback mechanism, allowing sophisticated patterns of retries and alternative urls to be specified easily
 * Client-side certificate support for Https (either from a Keystore or directly from PEM files)
+* Available on Maven Central
 
 #### No dependencies
 This is what originally motivated me to write this in the first place - I was fed up with the Maven equivalent of "DLL hell", with multiple incompatible versions of the Apache Http Client pulled into projects through third party libraries. This library depends on nothing outside of the JDK itself. It became a small pet project and grew arms and legs since then ...
@@ -179,4 +180,13 @@ Response response =
    new Get("https://httpbin.org/x/y/z?a=1&b=2&c=3")
       .useClientCerts(ClientCerts.fromPEM("/a/b/c/mycerts.pem", "/x/y/z/another.pem"))
       .execute();
+```
+#### Usage in Maven Projects    
+Available on Maven Central at these coordinates:
+```xml
+<dependency>
+   <group>com.ultraspatial</group>
+   <artifactId>http-sender</artifactId>
+   <version>1.1</version>
+</dependency>
 ```
