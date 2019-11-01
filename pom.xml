@@ -2,7 +2,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ultraspatial</groupId>
     <artifactId>http-sender</artifactId>
-    <version>1.0</version>
+    <packaging>jar</packaging>
+    <version>1.1</version>
   
     <name>HttpSender</name>
     <description> An Http Client for Java with no external dependencies and a fluent interface</description>
