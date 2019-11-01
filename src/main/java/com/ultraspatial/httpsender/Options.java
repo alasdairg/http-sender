@@ -28,8 +28,15 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * An Http OPTIONS request
+ */
 public class Options extends IndividualRequest<Options>{
 
+   /**
+    * Construct a OPTIONS request
+    * @param url the url for the delete
+    */
    public Options(String url) {
       super(url);
    }
@@ -37,7 +44,11 @@ public class Options extends IndividualRequest<Options>{
    private Options(Options source) {
       super(source);
    }
-   
+
+   /**
+    * Create an independent copy of this OPTIONS request
+    * @return a copy
+    */
    public Options copy() {
       return new Options(this);
    }

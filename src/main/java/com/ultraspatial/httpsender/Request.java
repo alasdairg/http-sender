@@ -40,8 +40,8 @@ import java.util.function.Consumer;
 public interface Request {
 
    /**
-    * Execute the request and block until the Response is available. 
-    * @throws a RuntimeException if the request failed.
+    * Execute the request on the current thread and block until the Response is available.
+    * @throws RuntimeException if the request failed.
     * @return the server response
     */
 	Response execute();

@@ -35,23 +35,47 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A provider that returns an InputStream which returns the same data every time it is called.
+ */
 public class RepeatableInputStreamProvider implements InputStreamProvider {
 
    private byte[] data = {};
    private InputStream inputStream;
-   
+
+   /**
+    * Construct a provider that will return an InputStream to the specified data every time
+    * an InputStream is requested.
+    * @param string the underlying data
+    * @param charset the charset
+    */
    public RepeatableInputStreamProvider(String string, Charset charset) {
       data = string.getBytes(charset);
    }
-   
+
+   /**
+    * Construct a provider that will return an InputStream to the specified data every time
+    * an InputStream is requested.
+    * @param string the underlying data
+    */
    public RepeatableInputStreamProvider(String string) {
       this(string, StandardCharsets.UTF_8);
    }
-   
+
+   /**
+    * Construct a provider that will return an InputStream to the specified data every time
+    * an InputStream is requested.
+    * @param bytes the underlying data
+    */
    public RepeatableInputStreamProvider(byte[] bytes) {
       data = bytes;
    }
-   
+
+   /**
+    * Construct a provider that will return an InputStream to the specified data every time
+    * an InputStream is requested.
+    * @param is an InputStream that provides the underlying data
+    */
    public RepeatableInputStreamProvider(InputStream is) {
       inputStream = is;
    }

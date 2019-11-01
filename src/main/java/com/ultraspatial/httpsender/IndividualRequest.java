@@ -69,7 +69,11 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
    Map<String, List<String>> queryParams = new HashMap<>();
    Map<String, String> placeholders = new HashMap<>();
    private HttpURLConnectionFactory connectionFactory = INTERNAL_FACTORY;
-   
+
+   /**
+    * Create a request
+    * @param url the request url
+    */
    IndividualRequest(String url) {
       try {
          this.url = new URL(url);
@@ -96,6 +100,9 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       this.clientCerts = source.clientCerts;
    }
 
+   /**
+    * @return the url of this request
+    */
    public URL url() {
       return url;
    }
@@ -118,7 +125,10 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       }
       return me();
    }
-   
+
+   /**
+    * @return the headers in this request
+    */
    public Map<String, HeaderValues> getHeaders() {
       return new HashMap<>(headers);
    }
@@ -139,14 +149,25 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       return me();
    }
 
+   /**
+    * @param name the placeholder name
+    * @return the value associated with this placeholder
+    */
    public String getPlaceholder(String name) {
       return placeholders.get(name);
    }
-   
+
+   /**
+    * @return then placeholder values
+    */
    public Map<String, String> getPlaceholders() {
       return new HashMap<>(placeholders);
    }
-   
+
+   /**
+    * Clear all placeholder values.
+    * @return this (Builder pattern)
+    */
    public T clearPlaceholders() {
       placeholders.clear();
       return me();
@@ -181,6 +202,9 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       return me();
    }
 
+   /**
+    * @return the proxy set for this request
+    */
    public Proxy proxy() {
       return proxy;
    }
@@ -212,6 +236,9 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       return me();
    }
 
+   /**
+    * @return whether this request is set to follow redirects or not.
+    */
    public boolean getFollowRedirects() {
       return followRedirects;
    }
@@ -223,7 +250,7 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
     * @param values one or more values for the query parameter
     * @return this (Builder pattern)
     */
-   public T queryParam(String name, String... values) {
+   public T queryParam(String name, String ... values) {
       List<String> list = queryParams.get(name);
       if (list == null) {
          list = new ArrayList<>();
@@ -235,10 +262,17 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       return me();
    }
 
+   /**
+    * @return the query parameters set for this request
+    */
    public Map<String, List<String>> getQueryParams() {
       return new HashMap<>(queryParams);
    }
-   
+
+   /**
+    * Clear all query parameters.
+    * @return this (Builder pattern)
+    */
    public T clearQueryParams() {
       queryParams.clear();
       return me();
@@ -254,11 +288,21 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
       this.timeout = timeout;
       return me();
    }
-   
+
+   /**
+    * @return the timeout set for this request.
+    */
    public long getTimeout() {
       return timeout;
    }
-   
+
+   /**
+    * For an Https request, specifies a set of one or more client-side certificates that the
+    *  system can use to satisfy a client certificate request by the remote server during a TLS
+    *  handshake.
+    * @param cert client certificates
+    * @return this (Builder pattern)
+    */
    public T useClientCerts(ClientCerts cert) {
       this.clientCerts = cert;
       return me();
@@ -443,14 +487,21 @@ public abstract class IndividualRequest<T extends IndividualRequest<?>> implemen
    protected void preObtainResponse(HttpURLConnection conn) throws Exception {
    }
 
+   @Override
    public String toString() {
       return getMethodName() + " " + url;
    }
-   
+
+   /**
+    * @return the HTTP verb for this request type.
+    */
    public String getMethodName() {
       return this.getClass().getSimpleName().toUpperCase();
    }
-   
+
+   /**
+    * @return an independent copy of this request
+    */
    public abstract IndividualRequest<?> copy();
    
    //For testing purposes - package private

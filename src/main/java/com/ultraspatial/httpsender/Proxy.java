@@ -33,6 +33,9 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 
+/**
+ * Abstract utility class for contructing Proxy instances for use with requests
+ */
 abstract class Proxy {
    
    protected static java.net.Proxy at(java.net.Proxy.Type type, String host, int port) {

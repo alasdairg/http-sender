@@ -30,6 +30,9 @@ package com.ultraspatial.httpsender.fallback;
 
 import com.ultraspatial.httpsender.Request;
 
+/**
+ * Holder for a Request and its associated fallback options.
+ */
 class RequestHolder {
    private Request request;
    private boolean retryOnErrorResponse;

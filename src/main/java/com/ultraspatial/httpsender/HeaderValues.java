@@ -31,23 +31,40 @@ package com.ultraspatial.httpsender;
 import java.util.ArrayList;
 import java.util.List;
 
-public class
-HeaderValues {
+/**
+ * Instances of this class represent the header values for a single header in an
+ * HTTP request or response
+ */
+public class HeaderValues {
    private String name;
    private List<String> values = new ArrayList<>();
 
+   /**
+    * Create header values for a given header name.
+    * @param name the name
+    */
    public HeaderValues(String name) {
       this.name = name;
    }
 
+   /**
+    * Add a value to the header
+    * @param value the value
+    */
    public void add(String value) {
       values.add(value);
    }
 
+   /*
+    * @return the name of this header
+    */
    public String getName() {
       return name;
    }
 
+   /**
+    * @return the values for this header.
+    */
    public List<String> getValues() {
       return values;
    }

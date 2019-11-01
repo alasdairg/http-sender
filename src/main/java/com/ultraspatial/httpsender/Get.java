@@ -28,8 +28,15 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * An Http GET request
+ */
 public class Get extends IndividualRequest<Get> {
 
+   /**
+    * Construct a GET request
+    * @param url the url for the get
+    */
    public Get(String url) {
       super(url);
    }
@@ -37,7 +44,11 @@ public class Get extends IndividualRequest<Get> {
    private Get(Get source) {
       super(source);
    }
-   
+
+   /**
+    * Create an independent copy of this GET request
+    * @return a copy
+    */
    public Get copy() {
       return new Get(this);
    }

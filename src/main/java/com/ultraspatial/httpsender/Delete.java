@@ -28,8 +28,15 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * An Http DELETE request
+ */
 public class Delete extends IndividualRequest<Delete> {
 
+   /**
+    * Construct a DELETE request
+    * @param url the url for the delete
+    */
    public Delete(String url) {
       super(url);
    }
@@ -37,7 +44,11 @@ public class Delete extends IndividualRequest<Delete> {
    private Delete(Delete source) {
       super(source);
    }
-   
+
+   /**
+    * Create an independent copy of this DELETE request
+    * @return a copy
+    */
    public Delete copy() {
       return new Delete(this);
    }

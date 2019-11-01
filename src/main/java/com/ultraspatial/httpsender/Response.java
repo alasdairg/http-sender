@@ -43,6 +43,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A Response to an  Http Request
+ */
 public class Response implements Closeable {
 
    private IndividualRequest<?> request;
@@ -135,7 +138,7 @@ public class Response implements Closeable {
    }
    
    /**
-    * @return the Inputstream for the response wrapped with a Reader
+    * @return the InputStream for the response wrapped with a Reader
     */
    public Reader bodyAsReader() {
       return new InputStreamReader(responseBodyStream);
@@ -207,7 +210,7 @@ public class Response implements Closeable {
    }
 
    /**
-    * Close the underlying inputstream and clean up any resources.
+    * Close the underlying InputStream and clean up any resources.
     */
    @Override
    public void close() throws IOException {

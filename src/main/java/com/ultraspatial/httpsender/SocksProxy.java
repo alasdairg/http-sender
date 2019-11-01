@@ -28,11 +28,20 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * Utility class for creating a SOCKS Proxy on a given address and port.
+ */
 public class SocksProxy extends Proxy {
 
    private SocksProxy() {
    }
-   
+
+   /**
+    * Return a SOCKS Proxy on the specified address and port.
+    * @param host the address
+    * @param port the port
+    * @return a Proxy object
+    */
    public static java.net.Proxy at(String host, int port) {
       return at(java.net.Proxy.Type.SOCKS, host, port);
    }

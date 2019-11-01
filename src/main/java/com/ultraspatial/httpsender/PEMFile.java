@@ -45,10 +45,10 @@ import java.util.Set;
 import javax.xml.bind.DatatypeConverter;
 
 /**
- * This class extracts all unique X509 Certificates and all unique RSA Private Keys from a .PEM
- * file containing certificate and private key sections encoded in PKCS#8 format.
+ * Instances of this class represent all unique X509 Certificates and all unique RSA Private Keys
+ * conained in a .PEM file containing certificate and private key sections encoded in PKCS#8 format.
  * The keys must be unencrypted. Entries which are not X509 certificates or RSA Private
- * Keys will be ignored.
+ * Keys are ignored.
  * 
  * @author Alasdair Gilmour
  *
@@ -126,7 +126,11 @@ public class PEMFile {
          throw new RuntimeException(e);
       }
    }
-   
+
+   /**
+    * @param pem a file in PEM format
+    * @return a PEMFile instance based on the PEM file
+    */
    public static PEMFile from(File pem) {
       try {
          return from(new FileInputStream(pem));
@@ -134,7 +138,11 @@ public class PEMFile {
          throw new RuntimeException(ioe);
       }
    }
-   
+
+   /**
+    * @param pem InputStream to a file in PEM format
+    * @return a PEMFile instance based on the PEM file
+    */
    public static PEMFile from(InputStream pem) {
       try {
          return from(IOUtil.readStreamFully(pem));
@@ -142,7 +150,11 @@ public class PEMFile {
          throw new RuntimeException(ioe);
       }
    }
-   
+
+   /**
+    * @param pem byte[] contents of a file in PEM format
+    * @return a PEMFile instance based on the PEM file
+    */
    public static PEMFile from(byte[] pem) {
       return new PEMFile(pem);
    }

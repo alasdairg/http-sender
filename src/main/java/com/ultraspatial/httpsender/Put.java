@@ -28,8 +28,15 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * An Http PUT request
+ */
 public class Put extends WriteRequest<Put> {
-   
+
+   /**
+    * Construct a PUT request
+    * @param url the url for the delete
+    */
    public Put(String url) {
       super(url);
    }
@@ -37,7 +44,11 @@ public class Put extends WriteRequest<Put> {
    private Put(Put source) {
       super(source);
    }
-   
+
+   /**
+    * Create an independent copy of this PUT request
+    * @return a copy
+    */
    public Put copy() {
       return new Put(this);
    }

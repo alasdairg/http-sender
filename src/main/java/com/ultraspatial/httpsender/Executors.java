@@ -30,10 +30,16 @@ package com.ultraspatial.httpsender;
 
 import java.util.concurrent.ExecutorService;
 
+/**
+ * Utility class providing Executors to use for making requests asynchronously.
+ */
 public final class Executors {
 
    private static ExecutorService defaultExecutor = java.util.concurrent.Executors.newCachedThreadPool();
-   
+
+   /**
+    * @return a default thread pool
+    */
    public static ExecutorService defaultExecutor() {
       return defaultExecutor;
    }

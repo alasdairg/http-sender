@@ -1,37 +1,127 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.ultraspatial</groupId>
-  <artifactId>HttpSender</artifactId>
-  <version>1.0</version>
-  <name>HttpSender</name>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.ultraspatial</groupId>
+    <artifactId>http-sender</artifactId>
+    <version>1.0</version>
   
-  <dependencies>
-     <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
-        <scope>test</scope> 
-     </dependency>
-     <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-core</artifactId>
-        <version>2.15.0</version>
-        <scope>test</scope>
-     </dependency>
-  </dependencies>
+    <name>HttpSender</name>
+    <description> An Http Client for Java with no external dependencies and a fluent interface</description>
+    <url>https://github.com/alasdairg/http-sender</url>
+    
+    <organization>
+        <name>com.ultraspatial</name>
+        <url>https://github.com/alasdairg</url>
+    </organization>
+    
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/alasdairg/http-sender/issues</url>
+    </issueManagement>
+    
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+        <license>
+            <name>Eclipse Public License - v 1.0</name>
+            <url>https://www.eclipse.org/legal/epl-v10.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <scm>
+        <url>https://github.com/alasdairg/http-sender</url>
+        <connection>
+            scm:git:git://github.com/alasdairg/http-sender.git
+        </connection>
+        <developerConnection>
+            scm:git:ssh://git@github.com:alasdairg/http-sender.git
+        </developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Alasdair Gilmour</name>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope> 
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.15.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
   
-  <build>
-     <plugins>
-        <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-compiler-plugin</artifactId>
-           <version>3.3</version>
-           <configuration>
-              <source>1.8</source>
-              <target>1.8</target>
-           </configuration>
-         </plugin>
-      </plugins>
-   </build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                           <goal>sign</goal>
+                        </goals>
+                     </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution> 
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                   <execution>
+                      <id>attach-sources</id>
+                      <goals>
+                         <goal>jar-no-fork</goal>
+                      </goals>
+                   </execution>
+                </executions>
+             </plugin>
+        </plugins>
+     </build>
   
 </project>

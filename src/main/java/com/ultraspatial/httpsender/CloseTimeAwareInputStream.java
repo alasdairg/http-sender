@@ -32,11 +32,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.function.Consumer;
 
+/**
+ * An InputStream that notifies a listener with the current system time when it is closed.
+ */
 public class CloseTimeAwareInputStream extends InputStream {
 
    private InputStream wrapped;
    private Consumer<Long> consumer;
-   
+
+   /**
+    * Wrap an InputStream with a CloseTimeAwareInputStream
+    * @param wrapped an InputStream
+    * @param consumer someone to notify with the time when the wrapped stream is closed
+    */
    public CloseTimeAwareInputStream(InputStream wrapped, Consumer<Long> consumer) {
       this.wrapped = wrapped;
       this.consumer = consumer;

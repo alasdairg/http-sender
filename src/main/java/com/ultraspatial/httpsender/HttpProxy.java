@@ -28,11 +28,20 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * Utility class for creating an Http Proxy on a given address and port.
+ */
 public class HttpProxy {
    
    private HttpProxy() {
    }
-   
+
+   /**
+    * Return an Http Proxy on the specified address and port.
+    * @param host the address
+    * @param port the port
+    * @return a Proxy object
+    */
    public static java.net.Proxy at(String host, int port) {
       return Proxy.at(java.net.Proxy.Type.HTTP, host, port);
    }

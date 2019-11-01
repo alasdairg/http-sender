@@ -28,8 +28,15 @@
 
 package com.ultraspatial.httpsender;
 
+/**
+ * An Http POST request
+ */
 public class Post extends WriteRequest<Post> {
 
+   /**
+    * Construct a POST request
+    * @param url the url for the delete
+    */
    public Post(String url) {
       super(url);
    }
@@ -37,7 +44,11 @@ public class Post extends WriteRequest<Post> {
    protected Post(Post source) {
       super(source);
    }
-   
+
+   /**
+    * Create an independent copy of this POST request
+    * @return a copy
+    */
    public Post copy() {
       return new Post(this);
    }

@@ -31,7 +31,17 @@ package com.ultraspatial.httpsender;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Factory interface for constructing an HttpURLConnection
+ */
 public interface HttpURLConnectionFactory {
 
+   /**
+    * Create a HttpURLConnection for the given url and (optional) proxy.
+    * @param url the url
+    * @param proxy the (optional) proxy
+    * @return an HttpURLConnection
+    * @throws Exception
+    */
    HttpURLConnection build(URL url, java.net.Proxy proxy) throws Exception;
 }

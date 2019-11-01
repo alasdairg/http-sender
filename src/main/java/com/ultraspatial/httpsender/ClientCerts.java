@@ -74,23 +74,47 @@ public final class ClientCerts {
          return null;
       }
    }
-   
+
+   /**
+    * @param keyStore a KeyStore
+    * @return a ClientCerts instance backed by the specified KeyStore
+    */
    public static ClientCerts fromKeystore(KeyStore keyStore) {
       return new ClientCerts(keyStore, null);
    }
-   
+
+   /**
+    * @param keyStore a KeyStore
+    * @param entryPass a password for entries in the KeyStore
+    * @return a ClientCerts instance backed by the specified KeyStore
+    */
    public static ClientCerts fromKeystore(KeyStore keyStore, String entryPass) {
       return new ClientCerts(keyStore, entryPass);
    }
-   
+
+   /**
+    * @param keyStoreStream an InputStream to a KeyStore
+    * @return a ClientCerts instance backed by the KeyStore loaded from the stream
+    */
    public static ClientCerts fromKeystore(InputStream keyStoreStream) {
       return fromKeyStore(keyStoreStream, null, null);
    }
-   
+
+   /**
+    * @param keyStoreStream an InputStream to a KeyStore
+    * @param ksPass password for the KeyStore
+    * @return a ClientCerts instance backed by the KeyStore loaded from the stream
+    */
    public static ClientCerts fromKeystore(InputStream keyStoreStream, String ksPass) {
       return fromKeyStore(keyStoreStream, ksPass, null);
    }
-   
+
+   /**
+    * @param keyStoreStream an InputStream to a KeyStore
+    * @param ksPass password for the KeyStore
+    * @param entryPass a password for entries in the KeyStore
+    * @return a ClientCerts instance backed by the KeyStore loaded from the stream
+    */
    public static ClientCerts fromKeyStore(InputStream keyStoreStream, String ksPass, String entryPass) {      
       try {
          KeyStore keyStore = KeyStore.getInstance("PKCS12");
@@ -99,8 +123,12 @@ public final class ClientCerts {
       } catch (Exception e) {
          throw new RuntimeException(e);
       }
-   }  
-   
+   }
+
+   /**
+    * @param filePaths paths to one or more PEM files
+    * @return a ClientCerts instance based on the combined contents of the specified PEM files
+    */
    public static ClientCerts fromPEM(String ... filePaths) {
       File[] files = new File[filePaths.length];
       for (int i = 0; i < filePaths.length; i++) {
@@ -108,7 +136,11 @@ public final class ClientCerts {
       }
       return fromPEM(files);
    }
-   
+
+   /**
+    * @param arrays byte arrays, each containing the contents of a PEM file
+    * @return a ClientCerts instance based on the combined contents of the specified PEM files
+    */
    public static ClientCerts fromPEM(byte[] ... arrays) {
       PEMFile[] pemFiles = new PEMFile[arrays.length];
       for (int i = 0; i < arrays.length; i++) {
@@ -116,7 +148,11 @@ public final class ClientCerts {
       }
       return fromPEM(pemFiles);
    }
-   
+
+   /**
+    * @param streams InputStreams to one or more PEM files
+    * @return a ClientCerts instance based on the combined contents of the specified PEM files
+    */
    public static ClientCerts fromPEM(InputStream ... streams) {
       PEMFile[] pemFiles = new PEMFile[streams.length];
       for (int i = 0; i < streams.length; i++) {
@@ -124,7 +160,11 @@ public final class ClientCerts {
       }
       return fromPEM(pemFiles);
    }
-   
+
+   /**
+    * @param files one or more file objects that represent PEM files
+    * @return a ClientCerts instance based on the combined contents of the specified PEM files
+    */
    public static ClientCerts fromPEM(File ... files) {
       PEMFile[] pemFiles = new PEMFile[files.length];
       for (int i = 0; i < files.length; i++) {
@@ -132,7 +172,11 @@ public final class ClientCerts {
       }
       return fromPEM(pemFiles);
    }
-   
+
+   /**
+    * @param files one or more PEM files
+    * @return a ClientCerts instance based on the combined contents of the specified PEM files
+    */
    public static ClientCerts fromPEM(PEMFile ... files) {
       Set<RSAPrivateKey> privateKeys = new HashSet<>();
       Set<X509Certificate> certificates = new HashSet<>();

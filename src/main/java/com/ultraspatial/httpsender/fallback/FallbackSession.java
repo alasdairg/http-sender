@@ -32,6 +32,9 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
+/**
+ * Keeps track of a FallbackRequest execution
+ */
 class FallbackSession {
    
    private Deque<Integer> stack = new ArrayDeque<>();

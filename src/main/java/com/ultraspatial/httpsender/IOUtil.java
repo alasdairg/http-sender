@@ -4,12 +4,21 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Utility class with IO helper methods
+ */
 public final class IOUtil {
 
    private IOUtil() {
       //Utility class
    }
-   
+
+   /**
+    * Fully read an InputStream and return the data as a byte[] and close the stream.
+    * @param stream an InputStream
+    * @return the entire contents of the InputStream as a byte[]
+    * @throws IOException
+    */
    public static byte[] readStreamFully(InputStream stream) throws IOException {
       ByteArrayOutputStream baos = new ByteArrayOutputStream();
       try(InputStream is = stream;) {

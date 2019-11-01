@@ -57,7 +57,11 @@ public class FormPost extends WriteRequest<FormPost> {
    private static final String UNSUPPORTED_CT = "Content-Type is fixed as " + MIME_TYPE;
    
    private Map<String, List<String>> formFields = new HashMap<>();
-   
+
+   /**
+    * Construct a Form POST request
+    * @param url the url to post to
+    */
    public FormPost(String url) {
       super(url);
    }
@@ -65,7 +69,11 @@ public class FormPost extends WriteRequest<FormPost> {
    private FormPost(FormPost source) {
       super(source);
    }
-   
+
+   /**
+    * Create an independent copy of this Form POST request
+    * @return a copy
+    */
    public FormPost copy() {
       return new FormPost(this);
    }
@@ -74,27 +82,57 @@ public class FormPost extends WriteRequest<FormPost> {
    protected FormPost me() {
       return this;
    }
-   
+
+   /**
+    * Not supported for FormPost - use formField() methods to set the content
+    * @param body
+    * @return
+    */
    public FormPost requestBody(String body) {
       throw new UnsupportedOperationException(UNSUPPORTED);
    }
-   
+
+   /**
+    * Not supported for FormPost - use formField() methods to set the content
+    * @param bytes
+    * @return
+    */
    public FormPost requestBody(byte[] bytes) {
       throw new UnsupportedOperationException(UNSUPPORTED);
    }
-   
+
+   /**
+    * Not supported for FormPost - use formField() methods to set the content
+    * @param body
+    * @return
+    */
    public FormPost requestBody(InputStream body) {
       throw new UnsupportedOperationException(UNSUPPORTED);
    }
-   
+
+   /**
+    * Not supported for FormPost - use formField() methods to set the content
+    * @param provider
+    * @return
+    */
    public FormPost requestBody(InputStreamProvider provider) {
       throw new UnsupportedOperationException(UNSUPPORTED);
    }
-   
+
+   /**
+    * Not supported for FormPost - content type defaults to application/x-www-form-urlencoded
+    * @param type
+    * @return
+    */
    public FormPost contentType(String type) {
       throw new UnsupportedOperationException(UNSUPPORTED_CT);
    }
-   
+
+   /**
+    * Not supported for FormPost - content type defaults to application/x-www-form-urlencoded
+    * @param type
+    * @return
+    */
    public FormPost contentType(String type, Charset charset) {
       throw new UnsupportedOperationException(UNSUPPORTED_CT);
    }
@@ -107,7 +145,13 @@ public class FormPost extends WriteRequest<FormPost> {
       super.header(name, values);
       return this;
    }
-   
+
+   /**
+    * Set a form field to the specified value(s)
+    * @param name the field name
+    * @param values the value(s)
+    * @return this (Builder pattern)
+    */
    public FormPost formField(String name, String ... values) {
       List<String> list = formFields.get(name);
       if (list == null) {
@@ -119,11 +163,18 @@ public class FormPost extends WriteRequest<FormPost> {
       }
       return me();
    }
-   
+
+   /**
+    * Clear all the form fields.
+    */
    public void clearFormFields() {
       formFields.clear();
    }
-   
+
+   /**
+    * Get the form's fields as a Map.
+    * @return the form fields as a Map
+    */
    public Map<String, List<String>> getFormFields() {
       return new HashMap<>(formFields);
    }

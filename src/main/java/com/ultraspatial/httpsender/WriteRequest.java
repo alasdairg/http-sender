@@ -34,11 +34,19 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
 
+/**
+ * Common superclass for an Http write request (put, post, delete ...)
+ * @param <T>
+ */
 @SuppressWarnings("unchecked")
 public abstract class WriteRequest<T extends WriteRequest<?>> extends IndividualRequest<T> {
 
    private InputStreamProvider inputStreamProvider;
-   
+
+   /**
+    * Construct a write request
+    * @param url the url for the write
+    */
    public WriteRequest(String url) {
       super(url);
       inputStreamProvider = new RepeatableInputStreamProvider(new byte[] {});
@@ -53,32 +61,62 @@ public abstract class WriteRequest<T extends WriteRequest<?>> extends Individual
       conn.setDoOutput(true);
       writeRequestBody(conn);
    }
-   
+
+   /**
+    * Set the request body for this write request
+    * @param body the body as a String
+    * @return this (Builder pattern)
+    */
    public T requestBody(String body) {
       inputStreamProvider = new RepeatableInputStreamProvider(body);
       return (T) this;
    }
-   
+
+   /**
+    * Set the request body for this write request
+    * @param bytes the body as a byte[]
+    * @return this (Builder pattern)
+    */
    public T requestBody(byte[] bytes) {
       inputStreamProvider = new RepeatableInputStreamProvider(bytes);
       return (T) this;
    }
-   
+
+   /**
+    * Set the request body for this write request
+    * @param body an InputStream that the body can be read from
+    * @return this (Builder pattern)
+    */
    public T requestBody(InputStream body) {
       inputStreamProvider = new RepeatableInputStreamProvider(body);
       return (T) this;
    }
-   
+
+   /**
+    * Set the request body for this write request
+    * @param provider the provider of an InputStream that the body can be read from
+    * @return this (Builder pattern)
+    */
    public T requestBody(InputStreamProvider provider) {
       inputStreamProvider = provider;
       return (T) this;
    }
-   
+
+   /**
+    * Set the MIME type of the body in this write request
+    * @param type the MIME type
+    * @return this (Builder pattern)
+    */
    public T contentType(String type) {
       header("Content-Type", type);
       return (T) this;
    }
-   
+
+   /**
+    * Set the MIME type and charset of the body in this write request
+    * @param type the MIME type
+    * @return this (Builder pattern)
+    */
    public T contentType(String type, Charset charset) {
       header("Content-Type", type + "; charset=" + charset.name());
       return (T) this;

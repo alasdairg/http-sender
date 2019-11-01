@@ -30,7 +30,13 @@ package com.ultraspatial.httpsender;
 
 import java.io.InputStream;
 
+/**
+ * Provider of an InputStream
+ */
 public interface InputStreamProvider {
 
+   /**
+    * @return an InputStream
+    */
    InputStream getInputStream();
 }
