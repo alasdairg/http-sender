@@ -1,7 +1,7 @@
 # HttpSender
 
 HttpSender is an Http Client for Java. Features of note: 
-* No dependencies outside the JDK - it just uses Java's venerable Http(s)UrlConnection under the hood
+* No dependencies outside the JDK - it just uses Java's venerable Http(s)UrlConnection under the hood. This means its also pretty small: the jar file is less than 50K.
 * Intuitive "fluent" interface
 * Built-in timing of requests
 * Asynchronous and synchronous operation
