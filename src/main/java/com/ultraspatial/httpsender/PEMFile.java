@@ -39,10 +39,9 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.util.Base64;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.xml.bind.DatatypeConverter;
 
 /**
  * Instances of this class represent all unique X509 Certificates and all unique RSA Private Keys
@@ -105,7 +104,7 @@ public class PEMFile {
    }        
    
    private RSAPrivateKey processKey(String keySection) {
-      byte[] keyBytes = DatatypeConverter.parseBase64Binary(keySection);
+      byte[] keyBytes = Base64.getDecoder().decode(keySection);
       try { 
          PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(keyBytes);
          KeyFactory factory = KeyFactory.getInstance("RSA");
@@ -117,7 +116,7 @@ public class PEMFile {
    }
    
    private X509Certificate processCert(String certSection) {
-      byte[] certBytes = DatatypeConverter.parseBase64Binary(certSection);
+      byte[] certBytes = Base64.getDecoder().decode(certSection);
       try {
          CertificateFactory factory = CertificateFactory.getInstance("X.509");
          X509Certificate cert = (X509Certificate) factory.generateCertificate(new ByteArrayInputStream(certBytes));
