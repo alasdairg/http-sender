@@ -61,7 +61,7 @@ public class FallbackRequest implements Request {
     * Add a Request to be tried
     * @param request a Request to be tried
     * @param retryOnErrorResponse if set to true, this will treat an error Response (i.e. a response with status
-    * code >= 400) as a failure for the purposes of retrying. If set to false, only a thrown exception will be treated
+    * code &gt;= 400) as a failure for the purposes of retrying. If set to false, only a thrown exception will be treated
     * as a failure
     * @param retryStrategy determines whether to retry this request
     * @param backoffStrategy determines a length of time before retrying
@@ -78,7 +78,7 @@ public class FallbackRequest implements Request {
     * Add a Request to be tried. BackOffStrategy is defaulted to none. (i.e. retry immediately)
     * @param request a Request to be tried
     * @param retryOnErrorResponse if set to true, this will treat an error Response (i.e. a response with status
-    * code >= 400) as a failure for the purposes of retrying. If set to false, only a thrown exception will be treated
+    * code &gt;= 400) as a failure for the purposes of retrying. If set to false, only a thrown exception will be treated
     * as a failure
     * @param retryStrategy determines whether to retry this request
     * @return this (Builder pattern)
@@ -94,7 +94,7 @@ public class FallbackRequest implements Request {
     * is defaulted to no retries.
     * @param request a Request to be tried
     * @param retryOnErrorResponse if set to true, this will treat an error Response (i.e. a response with status
-    * code >= 400) as a failure for the purposes of retrying. If set to false, only a thrown exception will be treated
+    * code &gt;= 400) as a failure for the purposes of retrying. If set to false, only a thrown exception will be treated
     * as a failure
     * @return this (Builder pattern)
     */

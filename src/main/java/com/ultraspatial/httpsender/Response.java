@@ -86,7 +86,7 @@ public class Response implements Closeable {
          for (String str: entry.getValue()) {
             hv.add(str);
          }
-         String lookup = entry != null ? null : entry.getKey().toLowerCase();
+         String lookup = entry.getKey() == null ? null : entry.getKey().toLowerCase();
          headers.put(lookup, hv);
       }
    }

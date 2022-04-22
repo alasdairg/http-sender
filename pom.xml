@@ -3,7 +3,7 @@
     <groupId>com.ultraspatial</groupId>
     <artifactId>http-sender</artifactId>
     <packaging>jar</packaging>
-    <version>1.1</version>
+    <version>1.2</version>
   
     <name>HttpSender</name>
     <description> An Http Client for Java with no external dependencies and a fluent interface</description>
